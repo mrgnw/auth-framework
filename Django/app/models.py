@@ -24,3 +24,6 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural = 'Address'
+
+class Recipe(models.Model):
+    name = models.CharField(max_length=200)

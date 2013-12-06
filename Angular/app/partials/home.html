@@ -1,9 +1,11 @@
-  <!-- Home Partial -->
+<!-- Home Partial -->
 <div style="margin-left:5%">
 
-  <h2>AngularJS Django-Rest-Framework Seed</h2>
+  <h2>Recipe Management v.1</h2>
 
   <div login></div>
+
+  <div createUser></div>
 
   <table ng-show="users.length" cellspacing="5">
     <tr align="left">
@@ -17,6 +19,14 @@
   </table>
 
   <br>
+    <table ng-show="recipes.length" cellspacing="5">
+    <tr align="left">
+      <th>Recipe</th>
+    </tr>
+    <tr ng-repeat="recipe in recipes">
+      <td>{{recipe.name}}</td>
+    </tr>
+  </table>
 
   <table ng-show="addresses.length" cellspacing="5">
     <tr align="left">

@@ -7,6 +7,9 @@ var constants = {
         },
         "User": {
             "endpoint": "users"
+        },
+        "Recipe": {
+            "endpoint": "recipes"
         }
     }
 };

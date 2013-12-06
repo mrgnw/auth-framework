@@ -14,3 +14,8 @@ class AddressSerializer(serializers.ModelSerializer):
     """Serializes an Address object"""
     class Meta:
         model = Address
+
+class RecipeSerializer(serializers.ModelSerializer):
+    """Serializes a Recipe object"""
+    class Meta:
+        model = Recipe

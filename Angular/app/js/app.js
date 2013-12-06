@@ -13,4 +13,4 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
       	controller: 'homeCtrl'
       })
       .otherwise({redirectTo: '/home'});
-  }]);
+  }]); // If cookieStore is there, add to headers. If you watch, you can determine if it's been deleted and remove from the header.
