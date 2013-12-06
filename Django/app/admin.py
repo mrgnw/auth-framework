@@ -12,3 +12,6 @@ class AddressAdmin(admin.ModelAdmin):
 admin.site.register(Address, AddressAdmin)
 
 admin.site.register(Recipe)
+admin.site.register(Tag)
+
+
