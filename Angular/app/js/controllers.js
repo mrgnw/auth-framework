@@ -14,4 +14,11 @@ var controllersModule = angular.module('angularProject.controllers', [])
     $scope.addresses = Address.query();
     $scope.recipes = Recipe.query();
 
+})
+
+
+    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams) {
+        $scope.recipeID = $routeParams.recipeID
+
+
 });

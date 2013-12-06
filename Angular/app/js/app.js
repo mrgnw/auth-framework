@@ -12,5 +12,12 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
       	templateUrl: 'partials/home.html',
       	controller: 'homeCtrl'
       })
+        .when('/recipes/:recipeID',{
+            title: 'A recipe',
+            templateUrl: 'partials/recipe.html',
+            controller: 'recipeCtrl'
+        })
+
       .otherwise({redirectTo: '/home'});
-  }]); // If cookieStore is there, add to headers. If you watch, you can determine if it's been deleted and remove from the header.
+  }]);
+  // If cookieStore is there, add to headers. If you watch, you can determine if it's been deleted and remove from the header.

@@ -39,3 +39,8 @@ class RecipeList(generics.ListCreateAPIView):
     #permission_classes = (permissions.IsAuthenticated,)
     model = Recipe
     serializer_class = RecipeSerializer
+
+class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes = (permissions.IsAuthenticated,)
+    model = Recipe
+    serializer_class = RecipeSerializer
