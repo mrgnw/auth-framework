@@ -22,9 +22,9 @@
                 <!-- TODO: set CSS max-height and min-height.
                            Hopefully this will prevent wieird gaps. -->
 
-                <h2>{{ recipe.recipe_name }}</h2>
+                <h2><a href="#/recipes/{{ recipe.recipe_id }}">{{ recipe.recipe_name }}</a></h2>
                 <p>{{ recipe.recipe_description }}</p>
-                <p><a class="btn btn-default" href="#/recipes/{{ recipe.recipe_id }}" role="button">View details &raquo;</a></p>
+                <!-- <p><a class="btn btn-default" href="#/recipes/{{ recipe.recipe_id }}" role="button">View details &raquo;</a></p> -->
             </div><!--/span-->
 
           </div><!--/row-->
