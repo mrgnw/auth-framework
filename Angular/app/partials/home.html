@@ -19,6 +19,9 @@
           </div>
           <div class="row">
             <div ng-repeat="recipe in recipes" class="col-6 col-sm-6 col-lg-4">
+                <!-- TODO: set CSS max-height and min-height.
+                           Hopefully this will prevent wieird gaps. -->
+
                 <h2>{{ recipe.recipe_name }}</h2>
                 <p>{{ recipe.recipe_description }}</p>
                 <p><a class="btn btn-default" href="#/recipes/{{ recipe.recipe_id }}" role="button">View details &raquo;</a></p>
