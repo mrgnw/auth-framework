@@ -2,10 +2,9 @@
 
 angular.module('angularProject', ['ui.bootstrap']);
 
-
 // Declare app module and Appendages
-angular.module('angularProject', ['angularProject.filters', 'angularProject.services', 'angularProject.directives', 'angularProject.controllers'])
-  .config(['$routeProvider', function($routeProvider) {
+angular.module('angularProject', ['angularProject.filters', 'angularProject.services', 'angularProject.directives', 'angularProject.controllers', 'restangular'])
+  .config(['$routeProvider', 'RestangularProvider', function($routeProvider, RestangularProvider) {
     $routeProvider
       .when('/home', {
       	title: 'Home',
@@ -17,7 +16,7 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
             templateUrl: 'partials/recipe.html',
             controller: 'recipeCtrl'
         })
-
       .otherwise({redirectTo: '/home'});
+      RestangularProvider.setBaseUrl('http://localhost:8001');
   }]);
   // If cookieStore is there, add to headers. If you watch, you can determine if it's been deleted and remove from the header.

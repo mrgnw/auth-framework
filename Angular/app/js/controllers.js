@@ -17,8 +17,10 @@ var controllersModule = angular.module('angularProject.controllers', [])
 })
 
 
-    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams) {
+    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular) {
         $scope.recipeID = $routeParams.recipeID
 
-
+        Restangular.one('recipes', $scope.recipeID).get().then(function(data) {
+                $scope.recipe = data;
+        });
 });
