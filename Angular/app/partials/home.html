@@ -17,17 +17,17 @@
             <h1>Hello, world!</h1>
             <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
           </div>
-          <div ng-repeat="recipe in recipes" class="row">
-
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>{{ recipe.recipe_name }}</h2>
-              <p>{{ recipe.recipe_description }}</p>
-              <p><a class="btn btn-default" href="#/recipes/{{ recipe.recipe_id }}" role="button">View details &raquo;</a></p>
+          <div class="row">
+            <div ng-repeat="recipe in recipes" class="col-6 col-sm-6 col-lg-4">
+                <h2>{{ recipe.recipe_name }}</h2>
+                <p>{{ recipe.recipe_description }}</p>
+                <p><a class="btn btn-default" href="#/recipes/{{ recipe.recipe_id }}" role="button">View details &raquo;</a></p>
             </div><!--/span-->
 
           </div><!--/row-->
         </div><!--/span-->
 
+          <!--
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
           <div class="list-group">
             <a href="#" class="list-group-item active">Link</a>
@@ -41,7 +41,9 @@
             <a href="#" class="list-group-item">Link</a>
             <a href="#" class="list-group-item">Link</a>
           </div>
-        </div><!--/span-->
+        </div><!--/span--/> -->
+
+
       </div><!--/row-->
 
       <hr>

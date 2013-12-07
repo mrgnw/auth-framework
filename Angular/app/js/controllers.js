@@ -25,4 +25,7 @@ var controllersModule = angular.module('angularProject.controllers', [])
         Restangular.one('recipes', $scope.recipeID).get().then(function(response) {
                 $scope.recipe = response;
         })
+
+        // put updates
+        // post adds
 });
