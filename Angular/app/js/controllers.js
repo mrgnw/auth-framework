@@ -10,14 +10,12 @@ var controllersModule = angular.module('angularProject.controllers', [])
 //            $scope.recipes = Recipe.query();
 //        });
 
-    $scope.users = User.query();
-    $scope.addresses = Address.query();
+        $scope.users = User.query();
+        $scope.addresses = Address.query();
         //$scope.recipes = Recipe.query(); // Using $http
         Restangular.all('recipes').getList().then(function(response) { // Using Restangular.
             $scope.recipes = response;
         })
-
-
 })
 
 
