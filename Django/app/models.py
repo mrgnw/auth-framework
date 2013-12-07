@@ -52,18 +52,18 @@ class Tag(models.Model):
 
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, default=0) # (default=1)?
+    user = models.ForeignKey(User, default=0)
     tag = models.ForeignKey(Tag)
-    recipe_lists = models.ManyToManyField(RecipeList)
-    recipe_name = models.CharField(max_length=100, blank=True, null=True)
-    recipe_description = models.CharField(max_length=4000)
-    recipe_directions = models.CharField(max_length=4000)
-    recipe_notes = models.CharField(max_length=4000)
-    recipe_yield = models.CharField(max_length=20)
+    recipe_lists = models.ManyToManyField(RecipeList) # Add a default list?
+    recipe_name = models.CharField(max_length=100)
+    recipe_description = models.CharField(max_length=4000, blank=True, null=True)
+    recipe_directions = models.CharField(max_length=4000, blank=True, null=True)
+    recipe_notes = models.CharField(max_length=4000, blank=True, null=True)
+    recipe_yield = models.CharField(max_length=20, blank=True, null=True)
     recipe_prep_time = models.IntegerField(blank=True, null=True)
     recipe_cook_time = models.IntegerField(blank=True, null=True)
     recipe_total_time = models.IntegerField(blank=True, null=True)
-    recipe_source = models.CharField(max_length=255)
+    recipe_source = models.CharField(max_length=255, blank=True, null=True)
     private = models.BooleanField(default=True)
     archive = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True) # auto_now_add=True
