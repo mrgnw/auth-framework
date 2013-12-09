@@ -18,5 +18,15 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
         })
       .otherwise({redirectTo: '/home'});
       RestangularProvider.setBaseUrl('http://localhost:8001');
-  }]);
+  }])
+
+    .factory
+//    .factory('Page', function(){
+//        var title = 'default';
+//        return {
+//            getTitle: function() { return title; },
+//            setTitle: function(newTitle) { title = newTitle };
+//        }
+//    })
+;
   // If cookieStore is there, add to headers. If you watch, you can determine if it's been deleted and remove from the header.

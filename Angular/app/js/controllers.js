@@ -19,14 +19,16 @@ var controllersModule = angular.module('angularProject.controllers', [])
 })
 
 
-    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular) {
+    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular, $window) {
         $scope.recipeID = $routeParams.recipeID;
-        setTitle: $scope.recipeID;
-
         Restangular.one('recipes', $scope.recipeID).get().then(function(response) {
-                $scope.recipe = response;
+            $scope.recipe = response;
+            $window.document.title = $scope.recipe.recipe_name;
         })
 
+
+
+//        $scope.title = "bob";
         // put updates
         // post adds
 });
