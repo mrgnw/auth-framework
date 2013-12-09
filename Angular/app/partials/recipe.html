@@ -1,5 +1,17 @@
 
-<p>Recipe id: {{ recipeID }}</p>
-<h3>{{ recipe.recipe_name }}</h3>
 
+<h1>{{ recipe.recipe_name }}</h2>
+	<div class="jumbotron">
+		<p>{{ recipe.recipe_description }}</p>
+		<h3>Ingredients</h3>
+		<p> {{ recipe.recipe_ingredients }} </p>
+
+		<h3>Directions</h3>
+		<p> {{ recipe.recipe_directions }} </p>
+
+	</div>
+	Tag: <span class="label label-primary">{{ tag.tag_name }}</span>
+
+<h1>JSON!</h1>
+<p>Recipe id: {{ recipeID }}</p>
 <p>Recipe contents: {{ recipe }}</p>

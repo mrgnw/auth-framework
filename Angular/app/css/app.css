@@ -4,6 +4,11 @@
  */
 
 body {
-  padding-top: 30px; /* Reducing the size of the gap on top
+  padding-top: 40px; /* Reducing the size of the gap on top */
+  /*padding-left: 20px;*/
 }
 
+.jumbotron {
+	padding-top: 10px;
+	/*padding-left: 0px;*/
+}

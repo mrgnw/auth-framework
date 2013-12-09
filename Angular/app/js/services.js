@@ -29,12 +29,4 @@ function addResourceFactoryToService (service, resourceName, resourceEndpoint) {
         );
   });
 
-//    service.factory('Page', function()){
-//        var title = 'default';
-//        return {
-//            getTitle: function() { return title; },
-//            setTitle: function(newTitle) { title = newTitle };
-//        }
-//    }
-
 }

@@ -19,3 +19,8 @@ class RecipeSerializer(serializers.ModelSerializer):
     """Serializes a Recipe object"""
     class Meta:
         model = Recipe
+
+class TagSerializer(serializers.ModelSerializer):
+    """Serializes a Recipe object"""
+    class Meta:
+        model = Tag

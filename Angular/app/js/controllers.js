@@ -24,11 +24,11 @@ var controllersModule = angular.module('angularProject.controllers', [])
         Restangular.one('recipes', $scope.recipeID).get().then(function(response) {
             $scope.recipe = response;
             $window.document.title = $scope.recipe.recipe_name;
+
+//            Grab a tag
+//            TODO: Make a tags API
+            Restangular.one('tags', $scope.recipe.tag).get().then(function(response){
+                $scope.tag = response;
+            })
         })
-
-
-
-//        $scope.title = "bob";
-        // put updates
-        // post adds
 });

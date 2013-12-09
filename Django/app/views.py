@@ -44,3 +44,8 @@ class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = (permissions.IsAuthenticated,)
     model = Recipe
     serializer_class = RecipeSerializer
+
+class TagDetail(generics.RetrieveUpdateDestroyAPIView):
+    #permission_classes = (permissions.IsAuthenticated,)
+    model = Tag
+    serializer_class = TagSerializer
