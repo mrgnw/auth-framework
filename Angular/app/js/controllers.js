@@ -20,7 +20,8 @@ var controllersModule = angular.module('angularProject.controllers', [])
 
 
     .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular) {
-        $scope.recipeID = $routeParams.recipeID
+        $scope.recipeID = $routeParams.recipeID;
+        setTitle: $scope.recipeID;
 
         Restangular.one('recipes', $scope.recipeID).get().then(function(response) {
                 $scope.recipe = response;
