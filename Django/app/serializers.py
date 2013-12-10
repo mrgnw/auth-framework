@@ -24,3 +24,9 @@ class TagSerializer(serializers.ModelSerializer):
     """Serializes a Recipe object"""
     class Meta:
         model = Tag
+
+class PhotoSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Image
+        fields = ('url', 'id', 'image')
+        # owner = serializers.Field(source='owner.username')
