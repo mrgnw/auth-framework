@@ -38,20 +38,20 @@ class Migration(SchemaMigration):
         # Adding model 'Recipe'
         db.create_table(u'app_recipe', (
             ('recipe_id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['auth.User'])),
             ('tag', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['app.Tag'])),
             ('recipe_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('recipe_description', self.gf('django.db.models.fields.CharField')(max_length=4000)),
-            ('recipe_directions', self.gf('django.db.models.fields.CharField')(max_length=4000)),
-            ('recipe_notes', self.gf('django.db.models.fields.CharField')(max_length=4000)),
-            ('recipe_yield', self.gf('django.db.models.fields.CharField')(max_length=20)),
-            ('recipe_prep_time', self.gf('django.db.models.fields.IntegerField')()),
-            ('recipe_cook_time', self.gf('django.db.models.fields.IntegerField')()),
-            ('recipe_total_time', self.gf('django.db.models.fields.IntegerField')()),
-            ('recipe_source', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('private', self.gf('django.db.models.fields.IntegerField')()),
-            ('archive', self.gf('django.db.models.fields.IntegerField')()),
-            ('created', self.gf('django.db.models.fields.DateTimeField')()),
+            ('recipe_description', self.gf('django.db.models.fields.CharField')(max_length=4000, null=True, blank=True)),
+            ('recipe_directions', self.gf('django.db.models.fields.CharField')(max_length=4000, null=True, blank=True)),
+            ('recipe_notes', self.gf('django.db.models.fields.CharField')(max_length=4000, null=True, blank=True)),
+            ('recipe_yield', self.gf('django.db.models.fields.CharField')(max_length=20, null=True, blank=True)),
+            ('recipe_prep_time', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('recipe_cook_time', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('recipe_total_time', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
+            ('recipe_source', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
+            ('private', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('archive', self.gf('django.db.models.fields.BooleanField')(default=True)),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal(u'app', ['Recipe'])
 
@@ -74,6 +74,13 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'app', ['Ingredient'])
 
+        # Adding model 'Image'
+        db.create_table(u'app_image', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+        ))
+        db.send_create_signal(u'app', ['Image'])
+
 
     def backwards(self, orm):
         # Deleting model 'Address'
@@ -94,6 +101,9 @@ class Migration(SchemaMigration):
         # Deleting model 'Ingredient'
         db.delete_table(u'app_ingredient')
 
+        # Deleting model 'Image'
+        db.delete_table(u'app_image')
+
 
     models = {
         u'app.address': {
@@ -103,6 +113,11 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'state': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
             'street': ('django.db.models.fields.CharField', [], {'max_length': '200'})
+        },
+        u'app.image': {
+            'Meta': {'object_name': 'Image'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'})
         },
         u'app.ingredient': {
             'Meta': {'ordering': "('ingredient_name',)", 'object_name': 'Ingredient'},
@@ -114,22 +129,22 @@ class Migration(SchemaMigration):
         },
         u'app.recipe': {
             'Meta': {'ordering': "('created',)", 'object_name': 'Recipe'},
-            'archive': ('django.db.models.fields.IntegerField', [], {}),
-            'created': ('django.db.models.fields.DateTimeField', [], {}),
-            'private': ('django.db.models.fields.IntegerField', [], {}),
-            'recipe_cook_time': ('django.db.models.fields.IntegerField', [], {}),
-            'recipe_description': ('django.db.models.fields.CharField', [], {'max_length': '4000'}),
-            'recipe_directions': ('django.db.models.fields.CharField', [], {'max_length': '4000'}),
+            'archive': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'private': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'recipe_cook_time': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'recipe_description': ('django.db.models.fields.CharField', [], {'max_length': '4000', 'null': 'True', 'blank': 'True'}),
+            'recipe_directions': ('django.db.models.fields.CharField', [], {'max_length': '4000', 'null': 'True', 'blank': 'True'}),
             'recipe_id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'recipe_lists': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['app.RecipeList']", 'symmetrical': 'False'}),
             'recipe_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'recipe_notes': ('django.db.models.fields.CharField', [], {'max_length': '4000'}),
-            'recipe_prep_time': ('django.db.models.fields.IntegerField', [], {}),
-            'recipe_source': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'recipe_total_time': ('django.db.models.fields.IntegerField', [], {}),
-            'recipe_yield': ('django.db.models.fields.CharField', [], {'max_length': '20'}),
+            'recipe_notes': ('django.db.models.fields.CharField', [], {'max_length': '4000', 'null': 'True', 'blank': 'True'}),
+            'recipe_prep_time': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'recipe_source': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'recipe_total_time': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'recipe_yield': ('django.db.models.fields.CharField', [], {'max_length': '20', 'null': 'True', 'blank': 'True'}),
             'tag': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['app.Tag']"}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'default': '0', 'to': u"orm['auth.User']"})
         },
         u'app.recipelist': {
             'Meta': {'ordering': "('created',)", 'object_name': 'RecipeList'},

@@ -34,6 +34,7 @@ class Address(models.Model):
     class Meta:
         verbose_name_plural = 'Address'
 
+
 class RecipeList(models.Model):
     recipe_list_id = models.AutoField(primary_key=True)
     recipe_list_name = models.CharField(max_length=100)

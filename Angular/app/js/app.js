@@ -16,6 +16,11 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
             templateUrl: 'partials/recipe.html',
             controller: 'recipeCtrl'
         })
+        .when('/add-recipe',{
+            title: 'Add Recipe',
+            templateUrl: 'partials/add-recipe.html',
+            controller: 'addRecipeCtrl'
+        })
       .otherwise({redirectTo: '/home'});
       RestangularProvider.setBaseUrl('http://localhost:8001');
   }])
