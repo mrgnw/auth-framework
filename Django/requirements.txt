@@ -1,5 +1,6 @@
 Django==1.6
 Fabric==1.8.0
+Pillow==2.2.1
 South==0.8.4
 django-cors-headers==0.12
 djangorestframework==2.3.9

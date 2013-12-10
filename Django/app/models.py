@@ -99,3 +99,8 @@ class Ingredient(models.Model):
         ordering = ('ingredient_name',)
 
 
+class Image(models.Model):
+   image = models.ImageField(upload_to="/Django/images")
+
+   def __unicode__(self):
+       return self.image.url
