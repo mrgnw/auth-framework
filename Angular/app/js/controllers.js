@@ -52,11 +52,9 @@ var controllersModule = angular.module('angularProject.controllers', [])
             $scope.recipe.recipe_list = $scope.list;
             $scope.recipe.user = 1;
 
-            Restangular.all('recipes').getList().then(function(response) { // Using Restangular.
+            Restangular.all('recipes').getList().then(function(response) {
                response.post($scope.recipe);
             })
-
-//            $scope.recipes.post($scope.recipe);
         };
     })
 
