@@ -40,12 +40,26 @@ class RecipeList(generics.ListCreateAPIView):
     model = Recipe
     serializer_class = RecipeSerializer
 
+
 class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = (permissions.IsAuthenticated,)
     model = Recipe
     serializer_class = RecipeSerializer
 
+
+class TagList(generics.ListCreateAPIView):
+    # model = Tag
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+
 class TagDetail(generics.RetrieveUpdateDestroyAPIView):
     #permission_classes = (permissions.IsAuthenticated,)
     model = Tag
     serializer_class = TagSerializer
+
+
+class RecipeListList(generics.ListCreateAPIView):
+    from app.models import RecipeList as RL  # There's a naming conflict with the RecipeList class above.
+    model = RL  # Consider renaming.
+    serializer_class = RecipeListSerializer
