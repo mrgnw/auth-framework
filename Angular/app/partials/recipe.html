@@ -4,13 +4,14 @@
 	<div class="jumbotron">
 		<p>{{ recipe.recipe_description }}</p>
 		<h3>Ingredients</h3>
-		<p> {{ recipe.recipe_ingredients }} </p>
+		<p>  </p>
 
 		<h3>Directions</h3>
 		<p> {{ recipe.recipe_directions }} </p>
 
 	</div>
-	Tag: <span class="label label-primary">{{ tag.tag_name }}</span>
+	<p>Tag: <span class="label label-primary">{{ tag.tag_name }}</span></p>
+	<p>Prep time: {{ recipe.prep_time}}</p>
 
 <h1>JSON!</h1>
 <p>Recipe id: {{ recipeID }}</p>
