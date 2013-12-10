@@ -38,6 +38,9 @@ STATICFILES_FINDERS = (
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+MEDIA_ROOT = '~/localdev/auth-framework/Django/media/'
+MEDIA_URL = '/media/'
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
