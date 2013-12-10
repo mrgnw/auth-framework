@@ -50,7 +50,7 @@ var controllersModule = angular.module('angularProject.controllers', [])
             $scope.recipe.recipe_name = $scope.name;
             $scope.recipe.tag = $scope.tag;
             $scope.recipe.recipe_list = $scope.list;
-            $scope.recipe.user = 1; //
+            $scope.recipe.user = 1;
 
 
         Restangular.one('recipes').customPOST($scope.recipe);
