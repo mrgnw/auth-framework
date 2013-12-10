@@ -4,6 +4,15 @@ from rest_framework.authtoken.models import Token
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+PRIVATE_CHOICES = (
+    (1, 'Yes'),
+    (0, 'No'),
+)
+
+ARCHIVE_CHOICES = (
+    (1, 'Yes'),
+    (0, 'No'),
+)
 
 @receiver(post_save, sender=User)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
@@ -64,8 +73,8 @@ class Recipe(models.Model):
     recipe_cook_time = models.IntegerField(blank=True, null=True)
     recipe_total_time = models.IntegerField(blank=True, null=True)
     recipe_source = models.CharField(max_length=255, blank=True, null=True)
-    private = models.BooleanField(default=True)
-    archive = models.BooleanField(default=False)
+    private = models.BooleanField(choices=PRIVATE_CHOICES,default=1)
+    archive = models.BooleanField(choices=ARCHIVE_CHOICES,default=1)
     created = models.DateTimeField(auto_now_add=True) # auto_now_add=True
 
 
