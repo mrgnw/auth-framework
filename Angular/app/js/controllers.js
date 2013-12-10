@@ -52,9 +52,12 @@ var controllersModule = angular.module('angularProject.controllers', [])
             $scope.recipe.recipe_list = $scope.list;
             $scope.recipe.user = 1;
 
-            Restangular.all('recipes').getList().then(function(response) {
-               response.post($scope.recipe);
-            })
+
+        Restangular.one('recipes').customPOST($scope.recipe);
+
+//            Restangular.all('recipes').getList().then(function(response) {
+//               response.post($scope.recipe);
+//            })
         };
     })
 
