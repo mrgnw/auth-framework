@@ -38,8 +38,8 @@ STATICFILES_FINDERS = (
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-MEDIA_ROOT = '~/localdev/auth-framework/Django/media/'
-MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media'
+MEDIA_URL = 'media/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -120,7 +120,7 @@ LOGGING = {
     },
     'handlers': {
         'mail_admins': {
-            'level': 'ERROR',
+            'level': 'WARNING',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
         }
