@@ -1,10 +1,10 @@
+<div class="container">
+    <h1>{{ recipe.recipe_name }}</h1>
 
-
-<h1>{{ recipe.recipe_name }}</h1>
-	<div class="jumbotron">
+    <div class="well">
 		<p>{{ recipe.recipe_description }}</p>
 		<h3>Ingredients</h3>
-		<p>  </p>
+		<p> Ingredient 1 </p>
 
 		<h3>Directions</h3>
 		<p> {{ recipe.recipe_directions }} </p>
@@ -12,7 +12,7 @@
 	</div>
 	<p>Tag: <span class="label label-primary">{{ tag.tag_name }}</span></p>
 	<p>Prep time: {{ recipe.prep_time}}</p>
-
+</div>
 <h1>JSON!</h1>
 <p>Recipe id: {{ recipeID }}</p>
 <p>Recipe contents: {{ recipe }}</p>

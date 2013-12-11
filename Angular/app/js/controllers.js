@@ -33,27 +33,38 @@ var controllersModule = angular.module('angularProject.controllers', [])
     })
 
     .controller('addRecipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular, $window) {
+
         $scope.recipe = Object();
         $scope.recipeList = null;
         $scope.tag = null;
         $scope.name = null;
+        $scope.submitted = false;
 
         Restangular.all('tags').getList().then(function(response) {
                 $scope.tags = response;
         });
+
+
 
         Restangular.all('recipe-lists').getList().then(function(response) {
                 $scope.recipeLists = response;
         });
 
         $scope.save = function() {
-            $scope.recipe.recipe_name = $scope.name;
-            $scope.recipe.tag = $scope.tag;
-            $scope.recipe.recipe_list = $scope.list;
-            $scope.recipe.user = 1;
+            if($scope.submitted == false){
+                $scope.recipe.recipe_name = $scope.name;
+                $scope.recipe.recipe_description = $scope.description;
+                $scope.recipe.recipe_prep_time = $scope.prep;
+                $scope.recipe.recipe_cook_time = $scope.cook;
+                $scope.recipe.recipe_total_time = $scope.total;
+                $scope.recipe.tag = $scope.tag;
+                $scope.recipe.recipe_list = $scope.list;
+                $scope.recipe.user = 1;
+                Restangular.one('recipes').customPOST($scope.recipe).then(function(data){
+                    $scope.submitted = true;
+                    }
+            )};
 
-
-        Restangular.one('recipes').customPOST($scope.recipe);
 
 //            Restangular.all('recipes').getList().then(function(response) {
 //               response.post($scope.recipe);
