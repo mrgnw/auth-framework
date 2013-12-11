@@ -1,4 +1,11 @@
-<input type="text" ng-model="name">
-<select ng-model="tag" ng-options="tag.tag_id as tag.tag_name for tag in tags"></select>
-<select ng-model="recipeList" ng-options="recipeList.recipe_list_id as recipeList.recipe_list_name for recipeList in recipeLists">+</select>
-<button ng-click="save()">Save</button>
+
+<div class="container">
+    <h1></h1>
+    </div>
+<div class="container">
+    <input class="form-control" id="focusedInput" type="text" ng-model="name" placeholder="Recipe name">
+    <select ng-model="tag" ng-options="tag.tag_id as tag.tag_name for tag in tags"></select>
+    <select class="dropdown" ng-model="recipeList" ng-options="recipeList.recipe_list_id as recipeList.recipe_list_name for recipeList in recipeLists">+</select>
+    <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+    <!-- Change dropdowns to an AngularStrap typeahead
+</div>
