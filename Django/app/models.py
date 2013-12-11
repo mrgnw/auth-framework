@@ -101,8 +101,8 @@ class Ingredient(models.Model):
         ordering = ('ingredient_name',)
 
 
-class Image(models.Model):
-   image = models.ImageField(upload_to="media/photos/")
+class Photo(models.Model):
+   photo = models.ImageField(upload_to="media/photos/")
 
    def __unicode__(self):
        return self.image.url
