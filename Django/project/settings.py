@@ -1,5 +1,6 @@
 import os
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+
 # Django settings for project.
 
 REST_FRAMEWORK = {
@@ -38,8 +39,8 @@ STATICFILES_FINDERS = (
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-MEDIA_ROOT = 'media'
-MEDIA_URL = 'media/'
+MEDIA_ROOT = ''
+MEDIA_URL = '/media/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

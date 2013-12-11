@@ -27,6 +27,6 @@ class TagSerializer(serializers.ModelSerializer):
 
 class PhotoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Image
-        fields = ('url', 'id', 'image')
+        model = Photo
+        fields = ('url', 'id', 'photo')
         # owner = serializers.Field(source='owner.username')
