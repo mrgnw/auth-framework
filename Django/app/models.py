@@ -105,4 +105,4 @@ class Photo(models.Model):
    photo = models.ImageField(upload_to="media/photos/")
 
    def __unicode__(self):
-       return self.image.url
+       return self.photo.url
