@@ -60,9 +60,16 @@ class Tag(models.Model):
         ordering = ('created',)
 
 
+#2 PHOTOHELP
+# Insead of creating a Document model for uploading, I'm going to put it straight in Recipe.
+#3 PHOTOHELP
+# I'm also just putting it straight into the Recipe model isntead of creating a form.
+# ALSO using an ImageField instead of a FileField
+# Wish me luck.
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, default=0)
+    photo = models.ImageField(upload_to='photos/', blank=True, null=True)
     tag = models.ForeignKey(Tag)
     recipe_lists = models.ManyToManyField(RecipeList) # Add a default list?
     recipe_name = models.CharField(max_length=100)
@@ -86,6 +93,15 @@ class Recipe(models.Model):
         ordering = ('created',)
 
 
+
+# class Photo(models.Model):
+#    photo = models.ImageField(upload_to="media/photos")
+#
+#    def __unicode__(self):
+#        return self.photo.url
+
+
+
 class Ingredient(models.Model):
     ingredient_id = models.AutoField(primary_key=True)
     ingredient_name = models.CharField(max_length=100)
@@ -100,8 +116,3 @@ class Ingredient(models.Model):
         ordering = ('ingredient_name',)
 
 
-class Image(models.Model):
-   image = models.ImageField(upload_to="/Django/images")
-
-   def __unicode__(self):
-       return self.image.url
