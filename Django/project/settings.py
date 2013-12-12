@@ -40,7 +40,7 @@ STATICFILES_FINDERS = (
 )
 
 MEDIA_ROOT = ''
-MEDIA_URL = '/media/'
+MEDIA_URL = '/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

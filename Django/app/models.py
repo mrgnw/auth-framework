@@ -62,7 +62,7 @@ class Tag(models.Model):
 
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)
-    photo = models.ImageField(upload_to='photos', max_length=254, default="media/photos/reeses.jpg")
+    photo = models.ImageField(upload_to='media/photos', default="media/photos/reeses.jpg", blank=True, null=True)
     user = models.ForeignKey(User, default=0)
     tag = models.ForeignKey(Tag)
     recipe_lists = models.ManyToManyField(RecipeList) # Add a default list?
@@ -101,8 +101,10 @@ class Ingredient(models.Model):
         ordering = ('ingredient_name',)
 
 
-class Photo(models.Model):
-   photo = models.ImageField(upload_to="media/photos/")
-
-   def __unicode__(self):
-       return self.photo.url
+#class Photo(models.Model):
+#   photo = models.ImageField(upload_to="media/photos/",
+#                             default='media/photo/reeses.jpg',
+#                             null=True, blank=True)
+#
+#   def __unicode__(self):
+#       return self.photo.url

@@ -66,19 +66,19 @@ class RecipeListList(generics.ListCreateAPIView):
     serializer_class = RecipeListSerializer
 
 
-class PhotoDetail(APIView):
-
-    #permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
-
-    def get_object(self, pk):
-        try:
-            return Image.objects.get(pk=pk)
-        except Image.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        photo = self.get_object(pk)
-        serializer = PhotoSerializer(data=request.DATA, files=request.FILES)
-        return Response(serializer.data)
+#class PhotoDetail(APIView):
+#
+#    #permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly)
+#
+#    def get_object(self, pk):
+#        try:
+#            return Image.objects.get(pk=pk)
+#        except Image.DoesNotExist:
+#            raise Http404
+#
+#    def get(self, request, pk, format=None):
+#        photo = self.get_object(pk)
+#        serializer = PhotoSerializer(data=request.DATA, files=request.FILES)
+#        return Response(serializer.data)
 
         

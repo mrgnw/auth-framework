@@ -2,6 +2,11 @@
     <h1>{{ recipe.recipe_name }}</h1>
 
     <div class="well">
+    	<span style="float: left; margin-right: 15px;">
+    		<!-- TODO: Figure out how to insert photo into recipe view! -->
+    		<img src="http://127.0.0.1:8001/{{ recipe.photo }}" width="300" height="200" style="border-radius: 4px;">
+    	</span>
+    	    <p>{ { recipe.photo } } >> <font color = "ff8800">{{ recipe.photo }}</font></p>
 		<p>{{ recipe.recipe_description }}</p>
 		<h3>Ingredients</h3>
 		<p> Ingredient 1 </p>

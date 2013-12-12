@@ -14,5 +14,5 @@ admin.site.register(Address, AddressAdmin)
 admin.site.register(Recipe)
 admin.site.register(Tag)
 admin.site.register(RecipeList)
-admin.site.register(Photo)
+#admin.site.register(Photo)
 
