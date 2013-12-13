@@ -62,7 +62,7 @@ class Tag(models.Model):
 
 class Recipe(models.Model):
     recipe_id = models.AutoField(primary_key=True)
-    photo = models.ImageField(upload_to='media/photos', default="media/photos/reeses.jpg", blank=True, null=True)
+    photo = models.ImageField(upload_to='media/photos', blank=True, null=True)
     user = models.ForeignKey(User, default=0)
     tag = models.ForeignKey(Tag)
     recipe_lists = models.ManyToManyField(RecipeList) # Add a default list?
