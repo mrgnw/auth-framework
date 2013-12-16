@@ -19,8 +19,13 @@
             <select class="dropdown" ng-model="recipeList" ng-options="recipeList.recipe_list_id as recipeList.recipe_list_name for recipeList in recipeLists"></select>
             <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
             <div class="container" style="padding-top:20px;">
-                <input type="text" ng-model="newTagName" placeholder="cook time" style="width:100px;">
+                <input type="text" ng-model="newTagName" placeholder="tag name" style="width:100px;">
                 <button type="button" class="btn btn-primary" ng-click="addTag()">Add Tag</button>
+            </div>
+
+            <div class="container" style="padding-top:20px;">
+                <input type="text" ng-model="newListName" placeholder="list name" style="width:100px;">
+                <button type="button" class="btn btn-primary" ng-click="addList()">Add List</button>
             </div>
 <br>
     <!-- Change dropdowns to an AngularStrap typeahead -->

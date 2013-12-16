@@ -38,7 +38,7 @@ class Address(models.Model):
 class RecipeList(models.Model):
     recipe_list_id = models.AutoField(primary_key=True)
     recipe_list_name = models.CharField(max_length=100)
-    created = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __unicode__(self):
         return self.recipe_list_name
