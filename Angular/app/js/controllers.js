@@ -78,6 +78,8 @@ var controllersModule = angular.module('angularProject.controllers', [])
             $scope.newTag = Object();
             $scope.newTag.tag_name = tagName;
 
+            Restangular.one('recipes').customPOST($scope.recipe);
+
         }
 
     })
