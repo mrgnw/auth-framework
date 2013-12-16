@@ -31,6 +31,15 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+
+#1 PHOTOHELP
+# FROM https://github.com/axelpale/minimal-django-file-upload-example/blob/master/src/for_django_1-6/myproject/myproject/settings.py
+# Following this file
+# https://github.com/axelpale/minimal-django-file-upload-example/blob/master/src/for_django_1-6/myproject/myproject/settings.py
+# Also changed PROJECT_ROOT from that to PROJECT_PATH
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+MEDIA_URL = '/media/'
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -137,6 +146,6 @@ LOGGING = {
 
 try:
     from local_settings import *
-    INSTALLED_APPS += DEBUG_APPS
+    # INSTALLED_APPS += DEBUG_APPS
 except ImportError:
     pass

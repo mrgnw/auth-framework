@@ -101,10 +101,8 @@ class Ingredient(models.Model):
         ordering = ('ingredient_name',)
 
 
-#class Photo(models.Model):
-#   photo = models.ImageField(upload_to="media/photos/",
-#                             default='media/photo/reeses.jpg',
-#                             null=True, blank=True)
-#
-#   def __unicode__(self):
-#       return self.photo.url
+class Image(models.Model):
+   image = models.ImageField(upload_to="/Django/images")
+
+   def __unicode__(self):
+       return self.image.url
