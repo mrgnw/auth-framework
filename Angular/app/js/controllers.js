@@ -84,7 +84,7 @@ var controllersModule = angular.module('angularProject.controllers', [])
 
         $scope.addList = function() {
             $scope.newList = Object();
-            $scope.newList.list_name = $scope.newListName;
+            $scope.newList.recipe_list_name = $scope.newListName;
 
             Restangular.one('recipelists').customPOST($scope.newList);
 

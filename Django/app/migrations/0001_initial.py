@@ -22,7 +22,7 @@ class Migration(SchemaMigration):
         db.create_table(u'app_recipelist', (
             ('recipe_list_id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('recipe_list_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('created', self.gf('django.db.models.fields.DateTimeField')()),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal(u'app', ['RecipeList'])
 
@@ -30,14 +30,15 @@ class Migration(SchemaMigration):
         db.create_table(u'app_tag', (
             ('tag_id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('tag_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('frequency', self.gf('django.db.models.fields.IntegerField')()),
-            ('created', self.gf('django.db.models.fields.DateTimeField')()),
+            ('frequency', self.gf('django.db.models.fields.IntegerField')(default=0)),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
         ))
         db.send_create_signal(u'app', ['Tag'])
 
         # Adding model 'Recipe'
         db.create_table(u'app_recipe', (
             ('recipe_id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['auth.User'])),
             ('tag', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['app.Tag'])),
             ('recipe_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
@@ -131,6 +132,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "('created',)", 'object_name': 'Recipe'},
             'archive': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
             'private': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'recipe_cook_time': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'recipe_description': ('django.db.models.fields.CharField', [], {'max_length': '4000', 'null': 'True', 'blank': 'True'}),
@@ -148,14 +150,14 @@ class Migration(SchemaMigration):
         },
         u'app.recipelist': {
             'Meta': {'ordering': "('created',)", 'object_name': 'RecipeList'},
-            'created': ('django.db.models.fields.DateTimeField', [], {}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'recipe_list_id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'recipe_list_name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         u'app.tag': {
             'Meta': {'ordering': "('created',)", 'object_name': 'Tag'},
-            'created': ('django.db.models.fields.DateTimeField', [], {}),
-            'frequency': ('django.db.models.fields.IntegerField', [], {}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'frequency': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
             'tag_id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'tag_name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
