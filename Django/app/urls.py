@@ -10,7 +10,7 @@ urlpatterns = patterns('app.views', url(r'^addresses$', views.AddressList.as_vie
                        url(r'^recipes/(?P<pk>[0-9]+)$', views.RecipeDetail.as_view(), name='recipe-detail'),
                        url(r'^tags/(?P<pk>[0-9]+)$', views.TagDetail.as_view(), name='tag-detail'),
                        url(r'^tags$', views.TagList.as_view(), name='tag-detail'),
-                       url(r'^recipe-lists$', views.RecipeListList.as_view(), name='recipe-list-list'),
+                       url(r'^recipelists$', views.RecipeListList.as_view(), name='recipe-list-list'),
                        )
 
 urlpatterns += patterns('',
