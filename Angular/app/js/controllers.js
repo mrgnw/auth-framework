@@ -46,7 +46,6 @@ var controllersModule = angular.module('angularProject.controllers', [])
         });
 
 
-
         Restangular.all('recipe-lists').getList().then(function(response) {
                 $scope.recipeLists = response;
         });
@@ -73,11 +72,13 @@ var controllersModule = angular.module('angularProject.controllers', [])
                     $scope.submitted = true;
                     }
             )};
-
-
-//            Restangular.all('recipes').getList().then(function(response) {
-//               response.post($scope.recipe);
-//            })
         };
+
+        $scope.addTag = function() {
+            $scope.newTag = Object();
+            $scope.newTag.tag_name = tagName;
+
+        }
+
     })
 
