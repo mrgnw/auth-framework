@@ -46,7 +46,7 @@ var controllersModule = angular.module('angularProject.controllers', [])
         });
 
 
-        Restangular.all('recipe-lists').getList().then(function(response) {
+        Restangular.all('recipelists').getList().then(function(response) {
                 $scope.recipeLists = response;
         });
 
