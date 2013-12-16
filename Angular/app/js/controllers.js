@@ -76,9 +76,9 @@ var controllersModule = angular.module('angularProject.controllers', [])
 
         $scope.addTag = function() {
             $scope.newTag = Object();
-            $scope.newTag.tag_name = tagName;
+            $scope.newTag.tag_name = $scope.newTagName;
 
-            Restangular.one('recipes').customPOST($scope.recipe);
+            Restangular.one('tags').customPOST($scope.newTag);
 
         }
 
