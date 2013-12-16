@@ -50,8 +50,8 @@ class RecipeList(models.Model):
 class Tag(models.Model):
     tag_id = models.AutoField(primary_key=True)
     tag_name = models.CharField(max_length=100)
-    frequency = models.IntegerField()
-    created = models.DateTimeField()
+    frequency = models.IntegerField(default=0)
+    created = models.DateTimeField(blank=True, null=True)
 
     def __unicode__(self):
         return self.tag_name
