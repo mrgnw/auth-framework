@@ -54,14 +54,14 @@ var controllersModule = angular.module('angularProject.controllers', [])
 
         $scope.uploadFile = function(files) {
             $scope.recipe.photo = files[0];
-            alert(files[0])
+//            alert(files[0])
         }
 
         $scope.save = function() {
             if($scope.submitted == false){
                 $scope.recipe.recipe_name = $scope.name;
 
-                alert($scope.photo);
+//                alert($scope.photo);
                 $scope.recipe.recipe_description = $scope.description;
                 $scope.recipe.recipe_prep_time = $scope.prep;
                 $scope.recipe.recipe_cook_time = $scope.cook;
