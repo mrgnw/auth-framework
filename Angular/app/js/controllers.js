@@ -2,7 +2,7 @@
 
 var controllersModule = angular.module('angularProject.controllers', [])
 
-    .controller('homeCtrl', function($scope, $http, User, Address, Recipe, Restangular) {
+    .controller('homeCtrl', function ($scope, $http, User, Address, Recipe, Restangular) {
 
 //        $scope.$on('event:login-confirmed', function() {
 //            $scope.users = User.query();
@@ -13,27 +13,27 @@ var controllersModule = angular.module('angularProject.controllers', [])
         $scope.users = User.query();
         $scope.addresses = Address.query();
         //$scope.recipes = Recipe.query(); // Using $http
-        Restangular.all('recipes').getList().then(function(response) { // Using Restangular.
+        Restangular.all('recipes').getList().then(function (response) { // Using Restangular.
             $scope.recipes = response;
         })
     })
 
-    .controller('recipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular, $window) {
+    .controller('recipeCtrl', function ($scope, $http, Recipe, $routeParams, Restangular, $window) {
         $scope.recipeID = $routeParams.recipeID;
-        Restangular.one('recipes', $scope.recipeID).get().then(function(response) {
+        Restangular.one('recipes', $scope.recipeID).get().then(function (response) {
             $scope.recipe = response;
             $window.document.title = $scope.recipe.recipe_name;
             $scope.recipe_photo = response.photo;
 
 //            Grab a tag
 //            TODO: Make a tags API
-            Restangular.one('tags', $scope.recipe.tag).get().then(function(response){
+            Restangular.one('tags', $scope.recipe.tag).get().then(function (response) {
                 $scope.tag = response;
             })
         })
     })
 
-    .controller('addRecipeCtrl', function($scope, $http, Recipe, $routeParams, Restangular, $window) {
+    .controller('addRecipeCtrl', function ($scope, $http, Recipe, $routeParams, Restangular, $window) {
 
         $scope.recipe = Object();
         $scope.recipeList = null;
@@ -41,23 +41,23 @@ var controllersModule = angular.module('angularProject.controllers', [])
         $scope.name = null;
         $scope.submitted = false;
 
-        Restangular.all('tags').getList().then(function(response) {
-                $scope.tags = response;
+        Restangular.all('tags').getList().then(function (response) {
+            $scope.tags = response;
         });
 
 
-        Restangular.all('recipelists').getList().then(function(response) {
-                $scope.recipeLists = response;
+        Restangular.all('recipelists').getList().then(function (response) {
+            $scope.recipeLists = response;
         });
 
 
-        $scope.uploadFile = function(files) {
+        $scope.uploadFile = function (files) {
             $scope.recipe.photo = files[0];
 //            alert(files[0])
         }
 
-        $scope.save = function() {
-            if($scope.submitted == false){
+        $scope.save = function () {
+            if ($scope.submitted == false) {
                 $scope.recipe.recipe_name = $scope.name;
 
 //                alert($scope.photo);
@@ -68,25 +68,38 @@ var controllersModule = angular.module('angularProject.controllers', [])
                 $scope.recipe.tag = $scope.tag;
                 $scope.recipe.recipe_list = $scope.list;
                 $scope.recipe.user = 1;
-                Restangular.one('recipes').customPOST($scope.recipe).then(function(data){
+                Restangular.one('recipes').customPOST($scope.recipe).then(function (data) {
                     $scope.submitted = true;
-                    }
-            )};
-        };
+                })
 
-        $scope.addTag = function() {
-            $scope.newTag = Object();
-            $scope.newTag.tag_name = $scope.newTagName;
+            };
 
-            Restangular.one('tags').customPOST($scope.newTag);
+
+            $scope.addTag = function () {
+                $scope.newTag = Object();
+                $scope.newTag.tag_name = $scope.newTagName;
+
+
+                Restangular.one('tags').customPOST($scope.newTag).then(function (response) {
+                    $scope.tags.push(response);
+
+
+                })
+            };
+
+
+            $scope.tags.push($scope.newTagName)
 
         }
 
-        $scope.addList = function() {
+        $scope.addList = function () {
             $scope.newList = Object();
             $scope.newList.recipe_list_name = $scope.newListName;
 
+
             Restangular.one('recipelists').customPOST($scope.newList);
+
+            $scope.tags.push($scope.newTagName)
 
         }
 
