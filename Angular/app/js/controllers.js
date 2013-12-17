@@ -70,27 +70,21 @@ var controllersModule = angular.module('angularProject.controllers', [])
                 $scope.recipe.user = 1;
                 Restangular.one('recipes').customPOST($scope.recipe).then(function (data) {
                     $scope.submitted = true;
-                })
+                });
 
-            };
-
-
-            $scope.addTag = function () {
-                $scope.newTag = Object();
-                $scope.newTag.tag_name = $scope.newTagName;
-
-
-                Restangular.one('tags').customPOST($scope.newTag).then(function (response) {
-                    $scope.tags.push(response);
-
-
-                })
-            };
-
-
-            $scope.tags.push($scope.newTagName)
-
+            }
         }
+
+        $scope.addTag = function () {
+            $scope.newTag = Object();
+            $scope.newTag.tag_name = $scope.newTagName;
+
+
+            Restangular.one('tags').customPOST($scope.newTag).then(function (response) {
+                $scope.tags.push(response);
+            })
+        };
+
 
         $scope.addList = function () {
             $scope.newList = Object();
@@ -100,8 +94,6 @@ var controllersModule = angular.module('angularProject.controllers', [])
             Restangular.one('recipelists').customPOST($scope.newList);
 
             $scope.tags.push($scope.newTagName)
-
         }
-
     })
 
