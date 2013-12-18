@@ -70,10 +70,7 @@ var controllersModule = angular.module('angularProject.controllers', [])
 
         $scope.uploadFile = function (files) {
             $scope.recipe.photo = files[0];
-//            alert(files[0])
-
-
-
+            alert(files[0])
         }
 
         $scope.save = function () {
@@ -86,11 +83,27 @@ var controllersModule = angular.module('angularProject.controllers', [])
                 $scope.recipe.recipe_cook_time = $scope.cook;
                 $scope.recipe.recipe_total_time = $scope.total;
                 $scope.recipe.tag = $scope.tag;
-                $scope.recipe.recipe_list = $scope.list;
+                $scope.recipe.recipe_list = $scope.recipeList;
                 $scope.recipe.user = 1;
-                Restangular.one('recipes').customPOST($scope.recipe).then(function (data) {
-                    $scope.submitted = true;
-                });
+//                Restangular.one('recipes').customPOST($scope.recipe).then(function (data) {
+//                    $scope.submitted = true;
+//                });
+
+                var fd = new FormData();
+                //Take the first selected file
+                fd.append("recipe_name", $scope.recipe.recipe_name);
+                fd.append("user", 1);
+                fd.append("tag", $scope.recipe.tag);
+                fd.append("recipe_lists", $scope.recipe.recipe_list);
+                fd.append("photo", $scope.recipe.photo);
+                alert($scope.recipe.recipe_list);
+
+                $http.post('http://localhost:8001/recipes', fd, {
+//                    withCredentials: true,
+                    headers: {'Content-Type': undefined },
+                    transformRequest: angular.identity
+                }).success(alert("Success!")).error(alert("FAILED"))
+
 
             }
         }
