@@ -16,6 +16,13 @@ angular.module('angularProject', ['angularProject.filters', 'angularProject.serv
             templateUrl: 'partials/recipe.html',
             controller: 'recipeCtrl'
         })
+
+//        Q: How do we route to the edit page?
+        .when('/recipes/:recipeID#edit',{
+            title: 'Edit recipe',
+            templateUrl: 'partials/edit-recipe.html',
+            contorller: 'editRecipeCtrl'
+        })
         .when('/add-recipe',{
             title: 'Add Recipe',
             templateUrl: 'partials/add-recipe.html',

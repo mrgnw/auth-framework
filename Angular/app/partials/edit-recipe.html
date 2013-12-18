@@ -1,0 +1,55 @@
+
+<div class="container">
+    <h1></h1><!-- Prevents navbar from covering stuff up  -->
+</div>
+<div class="container">
+    <!-- our original one -->
+
+    <form ng-submit="save()" enctype="multipart/form-data">
+
+        <!-- PULL THE RECIPE -->
+        <!-- DEFAULT TO ORIGINAL PHOTO HERE -->
+        <input type="file" ng-model="photo" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+
+
+                $scope.recipe.tag = $scope.tag;
+                $scope.recipe.recipe_list = $scope.list;
+                $scope.recipe.user = 1;
+
+
+
+
+
+    <p><input class="form-control" id="recipeField" type="text" ng-model="name" value="$scope.recipe.recipe_name" style="width:250px;"></p>
+
+    <div class="well">
+    <p><input class="form-control input-sm" type="text" ng-model="description" value="$scope.recipe.recipe_description" style="width:250px;"></p>
+    <p><input type="text" ng-model="prep" value="$scope.recipe.recipe_prep_time" style="width:80px;">
+        <input type="text" ng-model="cook" value="$scope.recipe.recipe_cook_time" style="width:80px;">
+        <input type="text" ng-model="total" value="$scope.recipe.recipe_total_time" style="width:80px; ">
+    </p>
+
+
+        <!-- select default from dropdown
+        http://stackoverflow.com/questions/17968760/how-to-set-a-selected-option-of-a-dropdown-list-control-using-angular-js
+        NEED to add "selectedOption" to controller. See above link -->
+        <select ng-model="tag" ng-options="tag.tag_id as tag.tag_name for tag in tags" data-ng-model="selectedOption"></select>
+        <select class="dropdown" ng-model="recipeList" ng-options="recipeList.recipe_list_id as recipeList.recipe_list_name for recipeList in recipeLists"></select>
+        <input type="submit" class="btn btn-primary" value="Save">
+
+
+        <div class="container" style="padding-top:20px;">
+            <input type="text" ng-model="newTagName" placeholder="tag name" style="width:100px;">
+            <button type="button" class="btn btn-primary" ng-click="addTag()">Add Tag</button>
+        </div>
+
+        <div class="container" style="padding-top:20px;">
+            <input type="text" ng-model="newListName" placeholder="list name" style="width:100px;">
+            <button type="button" class="btn btn-primary" ng-click="addList()">Add List</button>
+        </div>
+        </form>
+<br>
+    <!-- Change dropdowns to an AngularStrap typeahead -->
+    <!-- <input type="text" ng-model="typeaheadvalue" bs-typeahead="typeahead" minlength=0 ng-options="recipeList.recipe_list_id as recipeList.recipe_list_name for recipeList in recipeLists"> -->
+
+</div>

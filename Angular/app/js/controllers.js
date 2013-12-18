@@ -25,11 +25,28 @@ var controllersModule = angular.module('angularProject.controllers', [])
             $window.document.title = $scope.recipe.recipe_name;
             $scope.recipe_photo = response.photo;
 
-//            Grab a tag
-//            TODO: Make a tags API
             Restangular.one('tags', $scope.recipe.tag).get().then(function (response) {
                 $scope.tag = response;
             })
+        })
+    })
+
+
+    .controller('editRecipeCtrl', function ($scope, $http, Recipe, $routeParams, Restangular, $window){
+//        Add a URL route that loads this view
+        $scope.recipeID = $routeParams.recipeID;
+        Restangular.one('recipes', $scope.recipeID).get().then(function (response) {
+            $scope.recipe = response;
+            $window.document.title = $scope.recipe.recipe_name;
+            $scope.recipe_photo = response.photo;
+
+            Restangular.one('tags', $scope.recipe.tag).get().then(function (response) {
+                $scope.tag = response;
+            })
+
+
+//            Edit the recipe
+
         })
     })
 
@@ -54,6 +71,9 @@ var controllersModule = angular.module('angularProject.controllers', [])
         $scope.uploadFile = function (files) {
             $scope.recipe.photo = files[0];
 //            alert(files[0])
+
+
+
         }
 
         $scope.save = function () {
