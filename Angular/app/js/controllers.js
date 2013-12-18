@@ -96,13 +96,19 @@ var controllersModule = angular.module('angularProject.controllers', [])
                 fd.append("tag", $scope.recipe.tag);
                 fd.append("recipe_lists", $scope.recipe.recipe_list);
                 fd.append("photo", $scope.recipe.photo);
-                alert($scope.recipe.recipe_list);
+//                alert($scope.recipe.recipe_list);
 
                 $http.post('http://localhost:8001/recipes', fd, {
 //                    withCredentials: true,
                     headers: {'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(alert("Success!")).error(alert("FAILED"))
+                }).success(function(response) {
+//                        alert('Success response: ' + response);
+                        $window.location = '/app/index.html';
+//                        /recipes/:recipeID
+                    }).error(function(response) {
+//                        alert('Response: ' + response);
+                    })
 
 
             }
