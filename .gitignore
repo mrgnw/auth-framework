@@ -1,8 +1,12 @@
-.DS_Store
+*.py[cod]
+
+# PyCharm
 .idea
 .idea/*
 
-*.pyc
-
+# Database
 *.sqlite3
 db.*
+
+# Mac
+.DS_Store
